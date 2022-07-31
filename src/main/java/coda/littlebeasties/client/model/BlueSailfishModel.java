@@ -15,7 +15,6 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 
 public class BlueSailfishModel extends EntityModel<BlueSailfish> {
-	
 	private final ModelPart Body;
 	private final ModelPart BackFin;
 	private final ModelPart LeftFin;

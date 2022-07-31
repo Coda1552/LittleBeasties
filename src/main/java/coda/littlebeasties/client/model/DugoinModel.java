@@ -15,7 +15,6 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 
 public class DugoinModel extends EntityModel<Dugoin> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	private final ModelPart Body;
 	private final ModelPart Tail;
 	private final ModelPart TailFin;

@@ -28,9 +28,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class SealightEntity extends WaterAnimal implements IAnimatable, IAnimationTickable {
+public class SealightEntity extends WaterAnimal {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(SealightEntity.class, EntityDataSerializers.INT);
-    private final AnimationFactory factory = new AnimationFactory(this);
 
     public SealightEntity(EntityType<? extends WaterAnimal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
@@ -45,34 +44,6 @@ public class SealightEntity extends WaterAnimal implements IAnimatable, IAnimati
         this.goalSelector.addGoal(0, new RandomSwimmingGoal(this, 1.0D, 1));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, LivingEntity.class, 10.0F));
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
-    }
-
-    @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 4, this::predicate));
-    }
-
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-/*        boolean walking = !(event.getLimbSwingAmount() > -0.01F && event.getLimbSwingAmount() < 0.01F);
-        if (walking) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sealight.swim", true));
-            return PlayState.CONTINUE;
-        }
-        else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.sealight.idle", true));
-            return PlayState.CONTINUE;
-        }*/
-        return PlayState.CONTINUE;
-    }
-
-    @Override
-    public AnimationFactory getFactory() {
-        return factory;
-    }
-
-    @Override
-    public int tickTimer() {
-        return tickCount;
     }
 
     protected void defineSynchedData() {
