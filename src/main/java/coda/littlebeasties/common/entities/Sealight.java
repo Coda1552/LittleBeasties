@@ -1,5 +1,10 @@
 package coda.littlebeasties.common.entities;
 
+import coda.littlebeasties.registry.LBItems;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.nbt.CompoundTag;
@@ -20,18 +25,11 @@ import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.IAnimationTickable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class SealightEntity extends WaterAnimal {
-    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(SealightEntity.class, EntityDataSerializers.INT);
+public class Sealight extends AbstractFish {
+    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(Sealight.class, EntityDataSerializers.INT);
 
-    public SealightEntity(EntityType<? extends WaterAnimal> p_27557_, Level p_27558_) {
+    public Sealight(EntityType<? extends AbstractFish> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
     }
 
@@ -44,6 +42,11 @@ public class SealightEntity extends WaterAnimal {
         this.goalSelector.addGoal(0, new RandomSwimmingGoal(this, 1.0D, 1));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, LivingEntity.class, 10.0F));
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
+    }
+
+    @Override
+    protected SoundEvent getFlopSound() {
+        return SoundEvents.COD_FLOP;
     }
 
     protected void defineSynchedData() {
@@ -83,4 +86,17 @@ public class SealightEntity extends WaterAnimal {
         return spawnDataIn;
     }
 
+    @Override
+    public ItemStack getBucketItemStack() {
+        return new ItemStack(LBItems.SEALIGHT_BUCKET.get());
+    }
+
+    @Override
+    public void saveToBucketTag(ItemStack stack) {
+        CompoundTag compoundnbt = stack.getOrCreateTag();
+        compoundnbt.putInt("Variant", this.getVariant());
+        if (this.hasCustomName()) {
+            stack.setHoverName(this.getCustomName());
+        }
+    }
 }

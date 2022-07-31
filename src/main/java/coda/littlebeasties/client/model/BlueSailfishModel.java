@@ -55,7 +55,7 @@ public class BlueSailfishModel extends EntityModel<BlueSailfish> {
 		float degree = 1.0f;
 		this.BackFin.xRot = Mth.cos(limbSwing * speed * 0.3F) * degree * 0.5F * limbSwingAmount;
 		this.LeftFin.yRot = 0.5F;
-		this.RightFin.yRot =-0.5F;
+		this.RightFin.yRot = -0.5F;
 	}
 
 	@Override

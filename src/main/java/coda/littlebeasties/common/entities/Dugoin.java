@@ -54,7 +54,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.TurtleEggBlock;
 
 public class Dugoin extends Animal implements NeutralMob {
-
 	private static final EntityDataAccessor<Boolean> HAS_EGG = SynchedEntityData.defineId(Dugoin.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> LAYING_EGG = SynchedEntityData.defineId(Dugoin.class, EntityDataSerializers.BOOLEAN);
 	int layEggCounter;

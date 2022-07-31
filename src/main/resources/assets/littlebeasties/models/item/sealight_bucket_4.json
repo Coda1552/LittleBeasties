@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "littlebeasties:item/sealight_bucket_4"
+  }
+}

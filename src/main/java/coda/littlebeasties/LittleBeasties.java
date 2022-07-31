@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import coda.littlebeasties.common.entities.BlueSailfish;
 import coda.littlebeasties.common.entities.Dugoin;
-import coda.littlebeasties.common.entities.SealightEntity;
+import coda.littlebeasties.common.entities.Sealight;
 import coda.littlebeasties.config.LBConfigHolder;
 import coda.littlebeasties.config.LittleBeastiesConfig;
 import coda.littlebeasties.registry.LBEntities;
@@ -45,7 +45,7 @@ public class LittleBeasties {
     }
 
     private void createAttributes(EntityAttributeCreationEvent event) {
-        event.put(LBEntities.SEALIGHT.get(), SealightEntity.createAttributes().build());
+        event.put(LBEntities.SEALIGHT.get(), Sealight.createAttributes().build());
         event.put(LBEntities.BLUE_SAILFISH.get(), BlueSailfish.createAttributes().build());
         event.put(LBEntities.DUGOIN.get(), Dugoin.createAttributes().build());
     }

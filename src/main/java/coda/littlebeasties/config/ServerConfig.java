@@ -13,7 +13,7 @@ public class ServerConfig {
 		this.dugoinSpawnWeight = buildInt(builder, "Dugoin Spawn Weight", "all", 5, 1, 300, "The weight of Dugoin in vanilla's spawn rate. Default is 5");
 	}
 	
-	private static ForgeConfigSpec.IntValue buildInt(ForgeConfigSpec.Builder builder, String name, String catagory, int defaultValue, int min, int max, String comment) {
+	private static ForgeConfigSpec.IntValue buildInt(ForgeConfigSpec.Builder builder, String name, String category, int defaultValue, int min, int max, String comment) {
 		return builder.comment(comment).translation(name).defineInRange(name, defaultValue, min, max);
 	}
 
