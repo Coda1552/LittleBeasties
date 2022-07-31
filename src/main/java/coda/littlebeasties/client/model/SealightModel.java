@@ -1,17 +1,14 @@
 package coda.littlebeasties.client.model;
 
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 import coda.littlebeasties.LittleBeasties;
 import coda.littlebeasties.common.entities.SealightEntity;
-import com.google.common.collect.Maps;
 import net.minecraft.Util;
 import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.model.provider.data.EntityModelData;
-
-import java.util.Map;
 
 public class SealightModel extends AnimatedGeoModel<SealightEntity> {
     public static final Map<Integer, ResourceLocation> TEXTURES = Util.make(Maps.newHashMap(), (hashMap) -> {

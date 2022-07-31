@@ -1,3 +1,11 @@
 {
-  "entity.littlebeasties.sealight": "Sealight"
+  "entity.littlebeasties.sealight": "Sealight",
+	"entity.littlebeasties.blue_sailfish": "Blue Sailfish",
+	"entity.littlebeasties.dugoin": "Dugoin",
+	
+	"item.littlebeasties.sealight_spawn_egg": "Sealight Spawn Egg",
+	"item.littlebeasties.blue_sailfish_spawn_egg": "Blue Sailfish Spawn Egg",
+	"item.littlebeasties.dugoin_spawn_egg": "Dugoin Spawn Egg",
+	
+	"item.littlebeasties.blue_sailfish_bucket": "Bucket of Blue Sailfish"
 }
