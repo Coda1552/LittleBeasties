@@ -10,5 +10,12 @@
 	"item.littlebeasties.dugoin_spawn_egg": "Dugoin Spawn Egg",
 
 	"item.littlebeasties.blue_sailfish_bucket": "Bucket of Blue Sailfish",
-	"item.littlebeasties.sealight_bucket": "Bucket of Sealight"
+	"item.littlebeasties.sealight_bucket": "Bucket of Sealight",
+
+	"entity.littlebeasties.sealight.0": "Elegant",
+	"entity.littlebeasties.sealight.1": "Crook",
+	"entity.littlebeasties.sealight.2": "???",
+	"entity.littlebeasties.sealight.3": "Pants",
+	"entity.littlebeasties.sealight.4": "Ghostly"
+
 }
