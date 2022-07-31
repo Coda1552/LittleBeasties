@@ -27,4 +27,6 @@ public class LBItems {
 	public static final RegistryObject<Item> BLUE_SAILFISH_BUCKET = ITEMS.register("blue_sailfish_bucket", () -> new LBBucketItem(LBEntities.BLUE_SAILFISH, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
 	public static final RegistryObject<Item> SEALIGHT_BUCKET = ITEMS.register("sealight_bucket", () -> new LBBucketItem(LBEntities.SEALIGHT, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
 
+    public static final RegistryObject<Item> SEALIGHT_VEIL = ITEMS.register("sealight_veil", () -> new Item(new Item.Properties().tab(GROUP)));
+
 }
