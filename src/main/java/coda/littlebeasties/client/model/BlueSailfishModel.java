@@ -45,7 +45,7 @@ public class BlueSailfishModel extends EntityModel<BlueSailfish> {
 
 		PartDefinition DorsalFin = Body.addOrReplaceChild("DorsalFin", CubeListBuilder.create().texOffs(0, 7).addBox(0.0F, -1.0F, 0.0F, 0.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, -0.5F));
 
-		return LayerDefinition.create(meshdefinition, 8, 25);
+		return LayerDefinition.create(meshdefinition, 16, 16);
 	}
 
 	@Override

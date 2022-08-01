@@ -13,6 +13,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 
+// todo - anims
 public class SealightModel<T extends Sealight> extends EntityModel<T> {
 	private final ModelPart Body;
 	private final ModelPart Head;

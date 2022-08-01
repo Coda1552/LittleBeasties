@@ -15,7 +15,7 @@ public class LBEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, LittleBeasties.MOD_ID);
 
     public static final RegistryObject<EntityType<Sealight>> SEALIGHT = create("sealight", EntityType.Builder.of(Sealight::new, MobCategory.WATER_AMBIENT).sized(0.3F, 0.4F));
-    public static final RegistryObject<EntityType<BlueSailfish>> BLUE_SAILFISH = create("blue_sailfish", EntityType.Builder.of(BlueSailfish::new, MobCategory.WATER_AMBIENT).sized(0.3F, 0.4F));
+    public static final RegistryObject<EntityType<BlueSailfish>> BLUE_SAILFISH = create("blue_sailfish", EntityType.Builder.of(BlueSailfish::new, MobCategory.WATER_AMBIENT).sized(0.25F, 0.25F));
     public static final RegistryObject<EntityType<Dugoin>> DUGOIN = create("dugoin", EntityType.Builder.of(Dugoin::new, MobCategory.CREATURE).sized(1F, 1F));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> create(String name, EntityType.Builder<T> builder) {
