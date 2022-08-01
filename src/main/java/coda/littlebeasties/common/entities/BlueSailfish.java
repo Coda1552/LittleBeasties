@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 
+// todo - fin-opining animation and logic
 public class BlueSailfish extends AbstractFish {
 
 	public BlueSailfish(EntityType<? extends AbstractFish> p_27461_, Level p_27462_) {
