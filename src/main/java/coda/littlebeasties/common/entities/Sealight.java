@@ -1,10 +1,13 @@
 package coda.littlebeasties.common.entities;
 
 import coda.littlebeasties.registry.LBItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.nbt.CompoundTag;
@@ -22,9 +25,10 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+
+import java.util.Random;
 
 public class Sealight extends AbstractFish {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(Sealight.class, EntityDataSerializers.INT);
@@ -98,5 +102,9 @@ public class Sealight extends AbstractFish {
         if (this.hasCustomName()) {
             stack.setHoverName(this.getCustomName());
         }
+    }
+
+    public static boolean canSealightSpawn(EntityType<Sealight> fish, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
+        return level.getFluidState(pos).is(FluidTags.WATER);
     }
 }

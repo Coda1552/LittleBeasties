@@ -51,10 +51,11 @@ public class LittleBeasties {
     }
     
 	public void setup(final FMLCommonSetupEvent event) {
-		SpawnPlacements.register(LBEntities.BLUE_SAILFISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, BlueSailfish::func_223364_b);
+		SpawnPlacements.register(LBEntities.BLUE_SAILFISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, BlueSailfish::canSailfishSpawn);
 		SpawnPlacements.register(LBEntities.DUGOIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Dugoin::canDugoinSpawn);
+		SpawnPlacements.register(LBEntities.SEALIGHT.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, Sealight::canSealightSpawn);
 	}
-	
+
 	@SubscribeEvent
 	public static void onBiomeLoad(BiomeLoadingEvent event) {
 		String name = event.getName().getPath();
@@ -64,6 +65,10 @@ public class LittleBeasties {
     	if (event.getCategory() == BiomeCategory.BEACH) {
     		event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(LBEntities.DUGOIN.get(), LittleBeastiesConfig.dugoinSpawnWeight, 4, 10));
     	}
+		if (name.equals("deep_frozen_ocean") || name.equals("frozen_ocean")) {
+			event.getSpawns().addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(LBEntities.SEALIGHT.get(), LittleBeastiesConfig.sealightSpawnWeight, 5, 10));
+		}
 	}
+
     
 }

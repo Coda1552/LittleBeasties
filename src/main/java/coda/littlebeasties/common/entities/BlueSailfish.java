@@ -29,15 +29,9 @@ public class BlueSailfish extends AbstractFish {
 	protected SoundEvent getFlopSound() {
 		return SoundEvents.COD_FLOP;
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	public static boolean func_223364_b(EntityType<BlueSailfish> hammerhead, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
-		if (pos.getY() > 45 && pos.getY() < level.getSeaLevel()) {
-			return level.getFluidState(pos).is(FluidTags.WATER);
-		} else {
-			return false;
-		}
+	public static boolean canSailfishSpawn(EntityType<BlueSailfish> fish, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
+		return level.getFluidState(pos).is(FluidTags.WATER);
 	}
-
-
 }
