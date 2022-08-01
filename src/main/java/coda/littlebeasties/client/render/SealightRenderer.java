@@ -42,8 +42,9 @@ public class SealightRenderer extends MobRenderer<Sealight, EntityModel<Sealight
 		float f = 4.3F * Mth.sin(0.6F * p_114019_);
 		p_114018_.mulPose(Vector3f.YP.rotationDegrees(f));
 		if (!p_114017_.isInWater()) {
-			p_114018_.translate((double)0.1F, (double)0.1F, (double)-0.1F);
+			p_114018_.translate(0.35F, 0.1F, 0.0F);
 			p_114018_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+			p_114018_.mulPose(Vector3f.YP.rotationDegrees(-90.0F));
 		}
 
 	}

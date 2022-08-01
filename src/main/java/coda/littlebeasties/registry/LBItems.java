@@ -2,6 +2,7 @@ package coda.littlebeasties.registry;
 
 import coda.littlebeasties.LittleBeasties;
 import coda.littlebeasties.common.item.LBBucketItem;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -28,5 +29,6 @@ public class LBItems {
 	public static final RegistryObject<Item> SEALIGHT_BUCKET = ITEMS.register("sealight_bucket", () -> new LBBucketItem(LBEntities.SEALIGHT, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
 
     public static final RegistryObject<Item> SEALIGHT_VEIL = ITEMS.register("sealight_veil", () -> new Item(new Item.Properties().tab(GROUP)));
+    public static final RegistryObject<Item> BLUE_SAILFISH = ITEMS.register("blue_sailfish", () -> new Item(new Item.Properties().tab(GROUP).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F).build())));
 
 }
