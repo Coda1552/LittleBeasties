@@ -99,22 +99,22 @@ public class Dugoin extends Animal implements NeutralMob {
 	}
 
 	protected void registerGoals() {
-		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(1, new Dugoin.DugoinBreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new Dugoin.DugoinLayEggGoal(this, 1.0D));
 		this.goalSelector.addGoal(1, new Dugoin.DugoinMeleeAttackGoal());
 		this.goalSelector.addGoal(1, new Dugoin.DugoinPanicGoal());
+		this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.25D));
+		this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.0D));
+		this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
+		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.targetSelector.addGoal(1, new Dugoin.DugoinHurtByTargetGoal());
 		this.targetSelector.addGoal(2, new Dugoin.DugoinAttackPlayersGoal());
-		this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, AbstractFish.class, 10, true, true, (Predicate<LivingEntity>)null));
-		this.targetSelector.addGoal(5, new ResetUniversalAngerTargetGoal<>(this, false));
-		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25D));
-		this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
-		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractFish.class, 10, true, true, null));
+		this.targetSelector.addGoal(4, new ResetUniversalAngerTargetGoal<>(this, false));
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 6.0D).add(Attributes.FOLLOW_RANGE, 20.0D).add(Attributes.MOVEMENT_SPEED, 0.15D).add(Attributes.ATTACK_DAMAGE, 3.0D);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.FOLLOW_RANGE, 20.0D).add(Attributes.MOVEMENT_SPEED, 0.15D).add(Attributes.ATTACK_DAMAGE, 3.0D);
 	}
 
 	public boolean doHurtTarget(Entity p_29522_) {
