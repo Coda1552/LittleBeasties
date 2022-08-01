@@ -6,11 +6,15 @@ import coda.littlebeasties.client.model.SealightModel;
 import coda.littlebeasties.client.render.layer.SealightGlowLayer;
 import coda.littlebeasties.common.entities.Sealight;
 import com.google.common.collect.Maps;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 import net.minecraft.Util;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.animal.Cod;
 
 import java.util.Map;
 
@@ -33,4 +37,14 @@ public class SealightRenderer extends MobRenderer<Sealight, EntityModel<Sealight
 		return TEXTURES.getOrDefault(entity.getVariant(), TEXTURES.get(0));
 	}
 
+	protected void setupRotations(Sealight p_114017_, PoseStack p_114018_, float p_114019_, float p_114020_, float p_114021_) {
+		super.setupRotations(p_114017_, p_114018_, p_114019_, p_114020_, p_114021_);
+		float f = 4.3F * Mth.sin(0.6F * p_114019_);
+		p_114018_.mulPose(Vector3f.YP.rotationDegrees(f));
+		if (!p_114017_.isInWater()) {
+			p_114018_.translate((double)0.1F, (double)0.1F, (double)-0.1F);
+			p_114018_.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+		}
+
+	}
 }
