@@ -1,44 +1,42 @@
 package coda.littlebeasties.common.entities;
 
 import coda.littlebeasties.registry.LBEntities;
-import coda.littlebeasties.registry.LBItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomFlyingGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.animal.AbstractFish;
+import net.minecraft.world.entity.ai.util.AirAndWaterRandomPos;
+import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.animal.FlyingAnimal;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
+import java.util.EnumSet;
 
+// todo - remove fall damage
 public class LeafFly extends Animal implements FlyingAnimal {
 
     public LeafFly(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
         this.moveControl = new FlyingMoveControl(this, 20, true);
+        this.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 16.0F);
+        this.setPathfindingMalus(BlockPathTypes.COCOA, -1.0F);
+        this.setPathfindingMalus(BlockPathTypes.FENCE, -1.0F);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -47,7 +45,7 @@ public class LeafFly extends Animal implements FlyingAnimal {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
+        this.goalSelector.addGoal(0, new LeafFlyWanderGoal());
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, LivingEntity.class, 10.0F));
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
     }
@@ -73,5 +71,43 @@ public class LeafFly extends Animal implements FlyingAnimal {
         flyingpathnavigation.setCanFloat(false);
         flyingpathnavigation.setCanPassDoors(true);
         return flyingpathnavigation;
+    }
+
+    public class LeafFlyWanderGoal extends Goal {
+        private static final int WANDER_THRESHOLD = 22;
+
+        LeafFlyWanderGoal() {
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
+
+        public boolean canUse() {
+            return LeafFly.this.navigation.isDone() && LeafFly.this.random.nextInt(10) == 0;
+        }
+
+        public boolean canContinueToUse() {
+            return LeafFly.this.navigation.isInProgress();
+        }
+
+        public void start() {
+            Vec3 vec3 = this.findPos();
+            if (vec3 != null) {
+                LeafFly.this.navigation.moveTo(LeafFly.this.navigation.createPath(new BlockPos(vec3), 1), 1.0D);
+            }
+
+        }
+
+        @Nullable
+        private Vec3 findPos() {
+            Vec3 vec3;
+/*            if (LeafFly.this.isHiveValid() && !LeafFly.this.closerThan(LeafFly.this.hivePos, 22)) {
+                Vec3 vec31 = Vec3.atCenterOf(LeafFly.this.hivePos);
+                vec3 = vec31.subtract(LeafFly.this.position()).normalize();
+            } else {*/
+                vec3 = LeafFly.this.getViewVector(0.0F);
+            //}
+
+            Vec3 vec32 = HoverRandomPos.getPos(LeafFly.this, 8, 7, vec3.x, vec3.z, ((float)Math.PI / 2F), 3, 1);
+            return vec32 != null ? vec32 : AirAndWaterRandomPos.getPos(LeafFly.this, 8, 4, -2, vec3.x, vec3.z, (double)((float)Math.PI / 2F));
+        }
     }
 }
