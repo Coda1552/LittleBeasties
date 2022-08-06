@@ -9,8 +9,11 @@ import coda.littlebeasties.client.render.BlueSailfishRenderer;
 import coda.littlebeasties.client.render.DugoinRenderer;
 import coda.littlebeasties.client.render.LeafFlyRenderer;
 import coda.littlebeasties.client.render.SealightRenderer;
+import coda.littlebeasties.registry.LBBlocks;
 import coda.littlebeasties.registry.LBEntities;
 import coda.littlebeasties.registry.LBItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -24,6 +27,8 @@ public class ClientEvents {
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ItemProperties.register(LBItems.SEALIGHT_BUCKET.get(), new ResourceLocation(LittleBeasties.MOD_ID, "variant"), (stack, world, player, i) -> stack.hasTag() ? stack.getTag().getInt("Variant") : 0);
+
+		ItemBlockRenderTypes.setRenderLayer(LBBlocks.LEAF_FLY_NEST.get(), RenderType.cutout());
 	}
 
     @SubscribeEvent

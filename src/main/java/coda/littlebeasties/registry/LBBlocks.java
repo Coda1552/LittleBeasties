@@ -8,6 +8,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FurnaceBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluids;
@@ -23,7 +25,8 @@ import java.util.function.Supplier;
 public class LBBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LittleBeasties.MOD_ID);
 
-    public static final RegistryObject<Block> LEAF_FLY_NEST = register("leaf_fly_nest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(1.4F).sound(SoundType.WOOD)), new Item.Properties());
+    // todo - custom block for leaf fly nests
+    public static final RegistryObject<Block> LEAF_FLY_NEST = register("leaf_fly_nest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(1.4F).sound(SoundType.WOOD)));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         return register(name, block, new Item.Properties().tab(LBItems.GROUP));
