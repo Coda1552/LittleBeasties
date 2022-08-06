@@ -1,5 +1,7 @@
 package coda.littlebeasties;
 
+import coda.littlebeasties.common.entities.LeafFly;
+import coda.littlebeasties.registry.LBBlocks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,6 +41,7 @@ public class LittleBeasties {
 
         LBEntities.ENTITIES.register(bus);
         LBItems.ITEMS.register(bus);
+        LBBlocks.BLOCKS.register(bus);
 
 		modLoadingContext.registerConfig(ModConfig.Type.SERVER, LBConfigHolder.SERVER_SPEC);
         bus.addListener(this::createAttributes);
@@ -48,6 +51,7 @@ public class LittleBeasties {
         event.put(LBEntities.SEALIGHT.get(), Sealight.createAttributes().build());
         event.put(LBEntities.BLUE_SAILFISH.get(), BlueSailfish.createAttributes().build());
         event.put(LBEntities.DUGOIN.get(), Dugoin.createAttributes().build());
+        event.put(LBEntities.LEAF_FLY.get(), LeafFly.createAttributes().build());
     }
     
 	public void setup(final FMLCommonSetupEvent event) {
