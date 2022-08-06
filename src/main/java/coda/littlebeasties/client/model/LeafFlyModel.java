@@ -1,14 +1,16 @@
 package coda.littlebeasties.client.model;
 
+import coda.littlebeasties.common.entities.LeafFly;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 
-public class LeafFlyModel<T extends Entity> extends EntityModel<T> {
+public class LeafFlyModel<T extends LeafFly> extends EntityModel<T> {
 	private final ModelPart Body;
 	private final ModelPart Tail;
 	private final ModelPart Rightwing;
@@ -44,8 +46,16 @@ public class LeafFlyModel<T extends Entity> extends EntityModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		float flapSpeed = 2.0F;
+
+		// todo - fix them stopping animation seemingly randomly
 		if (!entity.isOnGround()) {
-			
+			this.Rightwing.zRot = Mth.cos(-1.0F + ageInTicks * 0.5F * flapSpeed) * 0.7F;
+			this.Leftwing.zRot = -Mth.cos(-1.0F + ageInTicks * 0.5F * flapSpeed) * 0.7F;
+			this.Body.xRot = 0.1F + Mth.cos(ageInTicks * 0.18F) * (float)Math.PI * 0.025F;
+			this.Body.y = 22F - Mth.cos(ageInTicks * 0.18F) * 0.9F;
+
+			//this.Body.xRot = Math.min(entity.getSpeed(), 0.25F);
 		}
 	}
 
