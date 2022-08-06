@@ -48,8 +48,7 @@ public class LeafFlyModel<T extends LeafFly> extends EntityModel<T> {
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		float flapSpeed = 2.0F;
 
-		// todo - fix them stopping animation seemingly randomly
-		if (!entity.isOnGround()) {
+		if (!entity.isOnGround() || !entity.isEffectiveAi()) {
 			this.Rightwing.zRot = Mth.cos(-1.0F + ageInTicks * 0.5F * flapSpeed) * 0.7F;
 			this.Leftwing.zRot = -Mth.cos(-1.0F + ageInTicks * 0.5F * flapSpeed) * 0.7F;
 			this.Body.xRot = 0.1F + Mth.cos(ageInTicks * 0.18F) * (float)Math.PI * 0.025F;
