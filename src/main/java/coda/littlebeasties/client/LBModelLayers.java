@@ -9,6 +9,7 @@ public class LBModelLayers {
     public static ModelLayerLocation DUGOIN = create("dugoin");
     public static ModelLayerLocation SEALIGHT = create("sealight");
     public static ModelLayerLocation LEAF_FLY = create("leaf_fly");
+    public static ModelLayerLocation DRAGONFISH = create("dragonfish");
 
     private static final ModelLayerLocation create(String name) {
         return new ModelLayerLocation(new ResourceLocation(LittleBeasties.MOD_ID, name), name);

@@ -7,6 +7,7 @@ public class LittleBeastiesConfig {
 	public static int blueSailfishSpawnWeight = 3;
 	public static int dugoinSpawnWeight = 5;
 	public static int sealightSpawnWeight = 4;
+	public static int dragonfishSpawnWeight = 5;
 
 	public static void bakeServer(final ModConfig config) {
 		try {

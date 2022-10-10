@@ -5,11 +5,13 @@
 	"entity.littlebeasties.blue_sailfish": "Blue Sailfish",
 	"entity.littlebeasties.dugoin": "Dugoin",
 	"entity.littlebeasties.leaf_fly": "Leaf Fly",
+	"entity.littlebeasties.dragonfish": "Dragonfish",
 
 	"item.littlebeasties.sealight_spawn_egg": "Sealight Spawn Egg",
 	"item.littlebeasties.blue_sailfish_spawn_egg": "Blue Sailfish Spawn Egg",
 	"item.littlebeasties.dugoin_spawn_egg": "Dugoin Spawn Egg",
 	"item.littlebeasties.leaf_fly_spawn_egg": "Leaf Fly Spawn Egg",
+	"item.littlebeasties.dragonfish_spawn_egg": "Dragonfish Spawn Egg",
 
 	"item.littlebeasties.blue_sailfish_bucket": "Bucket of Blue Sailfish",
 	"item.littlebeasties.sealight_bucket": "Bucket of Sealight",
