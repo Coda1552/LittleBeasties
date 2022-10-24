@@ -61,7 +61,6 @@ public class LittleBeasties {
 
 	@SubscribeEvent
 	public static void onBiomeLoad(BiomeLoadingEvent event) {
-		String name = event.getName().getPath();
 
 		if (event.getCategory() == BiomeCategory.BEACH) {
 			event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(LBEntities.DUGOIN.get(), LittleBeastiesConfig.dugoinSpawnWeight, 4, 10));
@@ -71,10 +70,10 @@ public class LittleBeasties {
 			event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(LBEntities.DRAGONFISH.get(), LittleBeastiesConfig.dragonfishSpawnWeight, 1, 1));
 		}
 
-
+		String name = event.getName().getPath();
 		if (name.equals("warm_ocean")) {
-    		event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(LBEntities.BLUE_SAILFISH.get(), LittleBeastiesConfig.blueSailfishSpawnWeight, 1, 1));
-    	}
+			event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(LBEntities.BLUE_SAILFISH.get(), LittleBeastiesConfig.blueSailfishSpawnWeight, 1, 1));
+		}
 
 		if (name.equals("deep_frozen_ocean") || name.equals("frozen_ocean")) {
 			event.getSpawns().addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(LBEntities.SEALIGHT.get(), LittleBeastiesConfig.sealightSpawnWeight, 5, 10));
