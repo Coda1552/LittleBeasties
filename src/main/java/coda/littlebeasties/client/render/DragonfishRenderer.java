@@ -10,6 +10,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
 public class DragonfishRenderer extends MobRenderer<Dragonfish, EntityModel<Dragonfish>> {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(LittleBeasties.MOD_ID, "textures/entity/dragonfish.png");
@@ -26,6 +27,9 @@ public class DragonfishRenderer extends MobRenderer<Dragonfish, EntityModel<Drag
 	@Override
 	protected void setupRotations(Dragonfish fish, PoseStack stack, float p_115319_, float p_115320_, float p_115321_) {
 		super.setupRotations(fish, stack, p_115319_, p_115320_, p_115321_);
+
+		float f = 4.3F * Mth.sin(0.6F * p_115319_);
+		stack.mulPose(Vector3f.YP.rotationDegrees(f));
 
 		if (!fish.isInWater()) {
 			stack.translate(0.2F, 0.1F, 0.0D);

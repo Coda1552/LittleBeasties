@@ -56,19 +56,20 @@ public class DragonfishModel extends EntityModel<Dragonfish> {
 
 	@Override
 	public void setupAnim(Dragonfish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		float degree = 0.75f;
-		float speed = 1.0f;
+		float degree = 1.0f;
+		float speed = 0.75f;
 
-		this.CaudalFin.yRot = Mth.cos(-1.0F + limbSwing * speed) * degree * limbSwingAmount;
+		//limbSwing = ageInTicks * 0.3F;
+		//limbSwingAmount = 0.2F;
+
+		this.CaudalFin.yRot = Mth.cos(limbSwing * speed * 2.0F) * degree * limbSwingAmount;
+
 		this.LeftPectoralFin.yRot = -Mth.sin(1.0F + limbSwing * speed) * degree * limbSwingAmount - 0.5F;
 		this.RightPectoralFin.yRot = Mth.sin(1.0F + limbSwing * speed) * degree * limbSwingAmount + 0.5F;
-		this.Body.yRot = Mth.cos(limbSwing * speed) * degree * 0.5F * limbSwingAmount;
+		this.DorsalFin.zRot = Mth.sin(1.0F + limbSwing * speed) * degree * limbSwingAmount;
 
-		this.LeftBarble.yRot = 0F;
-		this.RightBarble.yRot = 0F;
-
-		this.LeftBarble.zRot = -Mth.cos(1.0F + limbSwing * speed) * 0.3F * degree * limbSwingAmount + 0.15F;
-		this.RightBarble.zRot = Mth.cos(1.0F + limbSwing * speed) * 0.3F * degree * limbSwingAmount - 0.15F;
+		this.LeftBarble.zRot = Mth.cos(1.0F + limbSwing * speed) * 0.6F * degree * limbSwingAmount + 0.15F;
+		this.RightBarble.zRot = Mth.cos(1.0F + limbSwing * speed) * 0.6F * degree * limbSwingAmount - 0.15F;
 	}
 
 	@Override
