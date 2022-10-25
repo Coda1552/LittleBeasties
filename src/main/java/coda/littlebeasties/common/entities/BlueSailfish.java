@@ -7,12 +7,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import org.jetbrains.annotations.Nullable;
 
 // todo - fin-opening animation and logic
 public class BlueSailfish extends AbstractFish {
@@ -29,6 +31,18 @@ public class BlueSailfish extends AbstractFish {
 	@Override
 	protected SoundEvent getFlopSound() {
 		return SoundEvents.COD_FLOP;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource p_21239_) {
+		return SoundEvents.COD_HURT;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.COD_DEATH;
 	}
 
 	public static boolean canSailfishSpawn(EntityType<BlueSailfish> fish, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {

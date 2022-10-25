@@ -2,6 +2,8 @@ package coda.littlebeasties.registry;
 
 import coda.littlebeasties.LittleBeasties;
 import coda.littlebeasties.common.item.LBBucketItem;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -26,11 +28,16 @@ public class LBItems {
     public static final RegistryObject<Item> DUGOIN_SPAWN_EGG = ITEMS.register("dugoin_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.DUGOIN, 0x60737e, 0xe7c961, new Item.Properties().tab(GROUP)));
     public static final RegistryObject<Item> LEAF_FLY_SPAWN_EGG = ITEMS.register("leaf_fly_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.LEAF_FLY, 0xdbd4d2, 0x494746, new Item.Properties().tab(GROUP)));
     public static final RegistryObject<Item> DRAGONFISH_SPAWN_EGG = ITEMS.register("dragonfish_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.DRAGONFISH, 0x2a2424, 0x5c2626, new Item.Properties().tab(GROUP)));
+    public static final RegistryObject<Item> LEAF_DARTFISH_SPAWN_EGG = ITEMS.register("leaf_dartfish_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.LEAF_DARTFISH, 0x71442a, 0x4c2d24, new Item.Properties().tab(GROUP)));
 
 	public static final RegistryObject<Item> BLUE_SAILFISH_BUCKET = ITEMS.register("blue_sailfish_bucket", () -> new LBBucketItem(LBEntities.BLUE_SAILFISH, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
 	public static final RegistryObject<Item> SEALIGHT_BUCKET = ITEMS.register("sealight_bucket", () -> new LBBucketItem(LBEntities.SEALIGHT, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
+	public static final RegistryObject<Item> LEAF_DARTFISH_BUCKET = ITEMS.register("leaf_dartfish_bucket", () -> new LBBucketItem(LBEntities.LEAF_DARTFISH, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
 
     public static final RegistryObject<Item> SEALIGHT_VEIL = ITEMS.register("sealight_veil", () -> new Item(new Item.Properties().tab(GROUP)));
     public static final RegistryObject<Item> BLUE_SAILFISH = ITEMS.register("blue_sailfish", () -> new Item(new Item.Properties().tab(GROUP).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F).build())));
 
+    // TODO - smoked fish fillet recipe
+    public static final RegistryObject<Item> FISH_FILLET = ITEMS.register("fish_fillet", () -> new Item(new Item.Properties().tab(GROUP).food(new FoodProperties.Builder().nutrition(2).saturationMod(0.3F).effect(() -> new MobEffectInstance(MobEffects.HUNGER, 200, 0), 0.5F).build())));
+    public static final RegistryObject<Item> SMOKED_FISH_FILLET = ITEMS.register("smoked_fish_fillet", () -> new Item(new Item.Properties().tab(GROUP).food(new FoodProperties.Builder().nutrition(7).saturationMod(0.6F).build())));
 }
