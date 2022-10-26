@@ -7,6 +7,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 
 public class LeafDartfishModel extends EntityModel<LeafDartfish> {
 	private final ModelPart body;
@@ -39,7 +40,10 @@ public class LeafDartfishModel extends EntityModel<LeafDartfish> {
 
 	@Override
 	public void setupAnim(LeafDartfish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+		this.body.y = Mth.cos(ageInTicks * 0.35F) * 0.75F + 23.0F;
+		this.body.xRot = Mth.cos(1.0F - ageInTicks * 0.35F) * 0.1F;
+		this.body.zRot = Mth.cos(ageInTicks * 0.35F) * 0.05F;
+		this.caudalFin.yRot = Mth.cos(ageInTicks * 0.5F) * 0.3F;
 	}
 
 	@Override

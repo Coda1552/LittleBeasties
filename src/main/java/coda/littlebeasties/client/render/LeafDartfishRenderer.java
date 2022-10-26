@@ -28,9 +28,6 @@ public class LeafDartfishRenderer extends MobRenderer<LeafDartfish, EntityModel<
 	protected void setupRotations(LeafDartfish fish, PoseStack stack, float p_115319_, float p_115320_, float p_115321_) {
 		super.setupRotations(fish, stack, p_115319_, p_115320_, p_115321_);
 
-		float f = 4.3F * Mth.sin(0.6F * p_115319_);
-		stack.mulPose(Vector3f.YP.rotationDegrees(f));
-
 		if (!fish.isInWater()) {
 			stack.translate(0.2F, 0.1F, 0.0D);
 			stack.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
