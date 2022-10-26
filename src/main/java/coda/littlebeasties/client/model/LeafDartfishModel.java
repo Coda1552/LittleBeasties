@@ -18,8 +18,8 @@ public class LeafDartfishModel extends EntityModel<LeafDartfish> {
 	public LeafDartfishModel(ModelPart root) {
 		this.body = root.getChild("body");
 		this.dorsalFin = body.getChild("dorsalFin");
-		this.caudalFin = body.getChild("caudalFin");
-		this.analFin = body.getChild("analFin");
+		this.caudalFin = dorsalFin.getChild("caudalFin");
+		this.analFin = caudalFin.getChild("analFin");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -31,19 +31,22 @@ public class LeafDartfishModel extends EntityModel<LeafDartfish> {
 
 		PartDefinition dorsalFin = body.addOrReplaceChild("dorsalFin", CubeListBuilder.create().texOffs(0, 2).addBox(0.0F, -2.0F, -1.0F, 0.0F, 2.0F, 7.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, -1.0F));
 
-		PartDefinition caudalFin = body.addOrReplaceChild("caudalFin", CubeListBuilder.create().texOffs(0, 8).addBox(0.0F, 0.0F, 0.0F, 0.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -1.0F, 3.0F));
+		PartDefinition caudalFin = dorsalFin.addOrReplaceChild("caudalFin", CubeListBuilder.create().texOffs(0, 8).addBox(0.0F, 0.0F, 0.0F, 0.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 4.0F));
 
-		PartDefinition analFin = body.addOrReplaceChild("analFin", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, -1.5F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 1.0F, 1.5F));
+		PartDefinition analFin = caudalFin.addOrReplaceChild("analFin", CubeListBuilder.create().texOffs(0, 0).addBox(0.0F, 0.0F, -1.5F, 0.0F, 2.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 2.0F, -1.5F));
 
 		return LayerDefinition.create(meshdefinition, 16, 16);
 	}
 
 	@Override
 	public void setupAnim(LeafDartfish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.body.y = Mth.cos(ageInTicks * 0.35F) * 0.75F + 23.0F;
+		this.body.y = Mth.cos(ageInTicks * 0.35F) * 0.75F + 22.5F;
 		this.body.xRot = Mth.cos(1.0F - ageInTicks * 0.35F) * 0.1F;
 		this.body.zRot = Mth.cos(ageInTicks * 0.35F) * 0.05F;
-		this.caudalFin.yRot = Mth.cos(ageInTicks * 0.5F) * 0.3F;
+		this.dorsalFin.yRot = Mth.cos(ageInTicks * 0.5F) * 0.1F;
+		this.dorsalFin.zRot = Mth.cos(ageInTicks * 0.5F) * 0.1F;
+
+
 	}
 
 	@Override
