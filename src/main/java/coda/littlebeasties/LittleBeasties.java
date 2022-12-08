@@ -50,6 +50,7 @@ public class LittleBeasties {
         event.put(LBEntities.DUGOIN.get(), Dugoin.createAttributes().build());
         event.put(LBEntities.LEAF_FLY.get(), LeafFly.createAttributes().build());
         event.put(LBEntities.DRAGONFISH.get(), Dragonfish.createAttributes().build());
+        event.put(LBEntities.COLLECTOR.get(), Collector.createCollectorAttributes().build());
     }
     
 	public void setup(final FMLCommonSetupEvent event) {

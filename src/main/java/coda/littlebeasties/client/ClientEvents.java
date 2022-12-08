@@ -1,14 +1,8 @@
 package coda.littlebeasties.client;
 
 import coda.littlebeasties.LittleBeasties;
-import coda.littlebeasties.client.model.BlueSailfishModel;
-import coda.littlebeasties.client.model.DugoinModel;
-import coda.littlebeasties.client.model.LeafFlyModel;
-import coda.littlebeasties.client.model.SealightModel;
-import coda.littlebeasties.client.render.BlueSailfishRenderer;
-import coda.littlebeasties.client.render.DugoinRenderer;
-import coda.littlebeasties.client.render.LeafFlyRenderer;
-import coda.littlebeasties.client.render.SealightRenderer;
+import coda.littlebeasties.client.model.*;
+import coda.littlebeasties.client.render.*;
 import coda.littlebeasties.registry.LBBlocks;
 import coda.littlebeasties.registry.LBEntities;
 import coda.littlebeasties.registry.LBItems;
@@ -37,6 +31,7 @@ public class ClientEvents {
     	event.registerEntityRenderer(LBEntities.DUGOIN.get(), DugoinRenderer::new);
     	event.registerEntityRenderer(LBEntities.SEALIGHT.get(), SealightRenderer::new);
     	event.registerEntityRenderer(LBEntities.LEAF_FLY.get(), LeafFlyRenderer::new);
+    	event.registerEntityRenderer(LBEntities.COLLECTOR.get(), CollectorRenderer::new);
     }
     
     @SubscribeEvent
@@ -45,5 +40,6 @@ public class ClientEvents {
     	event.registerLayerDefinition(LBModelLayers.DUGOIN, DugoinModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.SEALIGHT, SealightModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.LEAF_FLY, LeafFlyModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.COLLECTOR, CollectorModel::createBodyLayer);
     }
 }
