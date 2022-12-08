@@ -8,12 +8,16 @@ public class LittleBeastiesConfig {
 	public static int dugoinSpawnWeight = 5;
 	public static int sealightSpawnWeight = 4;
 	public static int dragonfishSpawnWeight = 5;
+	public static int leafDartfishSpawnWeight = 6;
 	public static int collectorSpawnWeight = 5;
 
 	public static void bakeServer(final ModConfig config) {
 		try {
 			blueSailfishSpawnWeight = LBConfigHolder.SERVER.blueSailfishSpawnWeight.get();
 			dugoinSpawnWeight = LBConfigHolder.SERVER.dugoinSpawnWeight.get();
+			sealightSpawnWeight = LBConfigHolder.SERVER.sealightSpawnWeight.get();
+			dragonfishSpawnWeight = LBConfigHolder.SERVER.dragonfishSpawnWeight.get();
+			leafDartfishSpawnWeight = LBConfigHolder.SERVER.leafDartfishSpawnWeight.get();
 			sealightSpawnWeight = LBConfigHolder.SERVER.sealightSpawnWeight.get();
 			sealightSpawnWeight = LBConfigHolder.SERVER.sealightSpawnWeight.get();
 			collectorSpawnWeight = LBConfigHolder.SERVER.collectorSpawnWeight.get();

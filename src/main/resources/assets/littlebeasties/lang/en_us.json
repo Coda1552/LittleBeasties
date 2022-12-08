@@ -6,6 +6,7 @@
 	"entity.littlebeasties.dugoin": "Dugoin",
 	"entity.littlebeasties.leaf_fly": "Leaf Fly",
 	"entity.littlebeasties.dragonfish": "Dragonfish",
+	"entity.littlebeasties.leaf_dartfish": "Leaf Dartfish",
 	"entity.littlebeasties.collector": "Collector",
 
 	"item.littlebeasties.sealight_spawn_egg": "Sealight Spawn Egg",
@@ -13,13 +14,17 @@
 	"item.littlebeasties.dugoin_spawn_egg": "Dugoin Spawn Egg",
 	"item.littlebeasties.leaf_fly_spawn_egg": "Leaf Fly Spawn Egg",
 	"item.littlebeasties.dragonfish_spawn_egg": "Dragonfish Spawn Egg",
+	"item.littlebeasties.leaf_dartfish_spawn_egg": "Leaf Dartfish Spawn Egg",
 	"item.littlebeasties.collector_spawn_egg": "Collector Spawn Egg",
 
 	"item.littlebeasties.blue_sailfish_bucket": "Bucket of Blue Sailfish",
 	"item.littlebeasties.sealight_bucket": "Bucket of Sealight",
+	"item.littlebeasties.leaf_dartfish_bucket": "Bucket of Leaf Dartfish",
 
 	"item.littlebeasties.sealight_veil": "Sealight Veil",
 	"item.littlebeasties.blue_sailfish": "Blue Sailfish",
+	"item.littlebeasties.fish_fillet": "Raw Fish Fillet",
+	"item.littlebeasties.smoked_fish_fillet": "Smoked Fish Fillet",
 
 	"block.littlebeasties.leaf_fly_nest": "Leaf Fly Nest",
 

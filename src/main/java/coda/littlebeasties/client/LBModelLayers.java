@@ -10,6 +10,7 @@ public class LBModelLayers {
     public static ModelLayerLocation SEALIGHT = create("sealight");
     public static ModelLayerLocation LEAF_FLY = create("leaf_fly");
     public static ModelLayerLocation DRAGONFISH = create("dragonfish");
+    public static ModelLayerLocation LEAF_DARTFISH = create("leaf_dartfish");
     public static ModelLayerLocation COLLECTOR = create("collector");
 
     private static final ModelLayerLocation create(String name) {

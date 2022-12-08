@@ -17,6 +17,7 @@ public class LBEntities {
     public static final RegistryObject<EntityType<Dugoin>> DUGOIN = create("dugoin", EntityType.Builder.of(Dugoin::new, MobCategory.CREATURE).sized(0.65F, 0.6F));
     public static final RegistryObject<EntityType<LeafFly>> LEAF_FLY = create("leaf_fly", EntityType.Builder.of(LeafFly::new, MobCategory.CREATURE).sized(0.55F, 0.2F));
     public static final RegistryObject<EntityType<Dragonfish>> DRAGONFISH = create("dragonfish", EntityType.Builder.of(Dragonfish::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.35F));
+    public static final RegistryObject<EntityType<LeafDartfish>> LEAF_DARTFISH = create("leaf_dartfish", EntityType.Builder.of(LeafDartfish::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.3F));
     public static final RegistryObject<EntityType<Collector>> COLLECTOR = create("collector", EntityType.Builder.of(Collector::new, MobCategory.WATER_CREATURE).sized(1.0F, 1.2F));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> create(String name, EntityType.Builder<T> builder) {

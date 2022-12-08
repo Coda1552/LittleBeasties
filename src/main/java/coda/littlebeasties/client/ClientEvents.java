@@ -31,7 +31,8 @@ public class ClientEvents {
     	event.registerEntityRenderer(LBEntities.DUGOIN.get(), DugoinRenderer::new);
     	event.registerEntityRenderer(LBEntities.SEALIGHT.get(), SealightRenderer::new);
     	event.registerEntityRenderer(LBEntities.LEAF_FLY.get(), LeafFlyRenderer::new);
-    	event.registerEntityRenderer(LBEntities.COLLECTOR.get(), CollectorRenderer::new);
+    	event.registerEntityRenderer(LBEntities.DRAGONFISH.get(), DragonfishRenderer::new);
+    	event.registerEntityRenderer(LBEntities.LEAF_DARTFISH.get(), LeafDartfishRenderer::new);
     }
     
     @SubscribeEvent
@@ -40,6 +41,7 @@ public class ClientEvents {
     	event.registerLayerDefinition(LBModelLayers.DUGOIN, DugoinModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.SEALIGHT, SealightModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.LEAF_FLY, LeafFlyModel::createBodyLayer);
-    	event.registerLayerDefinition(LBModelLayers.COLLECTOR, CollectorModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.DRAGONFISH, DragonfishModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.LEAF_DARTFISH, LeafDartfishModel::createBodyLayer);
     }
 }

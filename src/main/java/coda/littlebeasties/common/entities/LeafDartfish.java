@@ -5,15 +5,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.HitResult;
@@ -21,20 +23,31 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class Dragonfish extends AbstractFish {
+public class LeafDartfish extends AbstractSchoolingFish {
 
-	public Dragonfish(EntityType<? extends AbstractFish> p_27461_, Level p_27462_) {
+	public LeafDartfish(EntityType<? extends AbstractSchoolingFish> p_27461_, Level p_27462_) {
 		super(p_27461_, p_27462_);
+	}
+
+	public static AttributeSupplier.Builder createAttributes() {
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 3.0D).add(Attributes.ATTACK_DAMAGE, 1.0D);
+	}
+
+	@Override
+	protected void registerGoals() {
+		super.registerGoals();
+		this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.0d, false));
+		this.targetSelector.addGoal(0, new HurtByTargetGoal(this).setAlertOthers());
 	}
 
 	@Override
 	public ItemStack getBucketItemStack() {
-	      return ItemStack.EMPTY;
+		return new ItemStack(LBItems.LEAF_DARTFISH_BUCKET.get());
 	}
 
 	@Override
 	public ItemStack getPickedResult(HitResult target) {
-		return new ItemStack(LBItems.DRAGONFISH_SPAWN_EGG.get());
+		return new ItemStack(LBItems.LEAF_DARTFISH_SPAWN_EGG.get());
 	}
 
 	@Override
@@ -54,17 +67,4 @@ public class Dragonfish extends AbstractFish {
 		return SoundEvents.COD_DEATH;
 	}
 
-	public static boolean canSpawn(EntityType<Dragonfish> fish, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
-		return level.getFluidState(pos).is(FluidTags.WATER);
-	}
-
-	@Override
-	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if (player.getItemInHand(hand).is(Items.WATER_BUCKET)) {
-			return InteractionResult.PASS;
-		}
-		else {
-			return super.mobInteract(player, hand);
-		}
-	}
 }
