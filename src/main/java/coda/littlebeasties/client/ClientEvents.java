@@ -33,6 +33,7 @@ public class ClientEvents {
     	event.registerEntityRenderer(LBEntities.LEAF_FLY.get(), LeafFlyRenderer::new);
     	event.registerEntityRenderer(LBEntities.DRAGONFISH.get(), DragonfishRenderer::new);
     	event.registerEntityRenderer(LBEntities.LEAF_DARTFISH.get(), LeafDartfishRenderer::new);
+    	event.registerEntityRenderer(LBEntities.COLLECTOR.get(), CollectorRenderer::new);
     }
     
     @SubscribeEvent
@@ -43,5 +44,6 @@ public class ClientEvents {
     	event.registerLayerDefinition(LBModelLayers.LEAF_FLY, LeafFlyModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.DRAGONFISH, DragonfishModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.LEAF_DARTFISH, LeafDartfishModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.COLLECTOR, CollectorModel::createBodyLayer);
     }
 }
