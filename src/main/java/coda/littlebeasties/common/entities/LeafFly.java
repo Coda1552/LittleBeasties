@@ -3,6 +3,7 @@ package coda.littlebeasties.common.entities;
 import coda.littlebeasties.registry.LBEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,6 +21,7 @@ import net.minecraft.world.entity.ai.util.HoverRandomPos;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -71,6 +73,15 @@ public class LeafFly extends Animal implements FlyingAnimal {
         flyingpathnavigation.setCanFloat(false);
         flyingpathnavigation.setCanPassDoors(true);
         return flyingpathnavigation;
+    }
+
+    @Override
+    public boolean causeFallDamage(float p_147187_, float p_147188_, DamageSource p_147189_) {
+        return false;
+    }
+
+    @Override
+    protected void checkFallDamage(double p_20990_, boolean p_20991_, BlockState p_20992_, BlockPos p_20993_) {
     }
 
     public class LeafFlyWanderGoal extends Goal {
