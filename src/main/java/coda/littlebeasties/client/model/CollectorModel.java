@@ -92,9 +92,6 @@ public class CollectorModel extends EntityModel<Collector> {
 
 	@Override
 	public void setupAnim(Collector entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		limbSwing = ageInTicks * 0.5F;
-		limbSwingAmount = 0.35F;
-
 		this.rightLeg.xRot = Mth.cos(limbSwing * 0.7F) * 1.4F * limbSwingAmount * 0.5F;
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.7F + (float)Math.PI) * 1.4F * limbSwingAmount * 0.5F;
 

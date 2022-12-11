@@ -38,12 +38,12 @@ public class Collector extends AbstractVillager {
     private static final int NUMBER_OF_TRADE_OFFERS = 7;
     public static final Int2ObjectMap<VillagerTrades.ItemListing[]> COLLECTOR_TRADES = toIntMap(ImmutableMap.of(
             1, new VillagerTrades.ItemListing[]{
-                    new EmeraldForItems(Items.CHICKEN, 14, 16, 2),
-                    new EmeraldForItems(Items.PORKCHOP, 7, 16, 2),
-                    new EmeraldForItems(Items.RABBIT, 4, 16, 2),
+                    new ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1),
+                    new ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1),
+                    new ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1),
+                    new ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1),
                     new ItemsForEmeralds(Items.RABBIT_STEW, 1, 1, 1)},
             2, new VillagerTrades.ItemListing[]{
-                    new EmeraldForItems(Items.COAL, 15, 16, 2),
                     new ItemsForEmeralds(Items.COOKED_PORKCHOP, 1, 5, 16, 5),
                     new ItemsForEmeralds(Items.COOKED_CHICKEN, 1, 8, 16, 5)}));
 
@@ -71,10 +71,10 @@ public class Collector extends AbstractVillager {
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Pillager.class, 15.0F, 0.5D, 0.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Illusioner.class, 12.0F, 0.5D, 0.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Zoglin.class, 10.0F, 0.5D, 0.5D));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 0.5D));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.0D));
         this.goalSelector.addGoal(1, new LookAtTradingPlayerGoal(this));
-        this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 0.35D));
-        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 0.35D));
+        this.goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 1.0D));
+        this.goalSelector.addGoal(8, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(9, new InteractGoal(this, Player.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
     }

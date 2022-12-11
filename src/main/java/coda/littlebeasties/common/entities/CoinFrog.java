@@ -8,6 +8,8 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
+import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -21,6 +23,8 @@ public class CoinFrog extends AbstractFish {
 
 	public CoinFrog(EntityType<? extends AbstractFish> p_27461_, Level p_27462_) {
 		super(p_27461_, p_27462_);
+		this.moveControl = new SmoothSwimmingMoveControl(this, 35, 10, 0.1F, 0.5F, false);
+		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 	}
 
 	@Override
