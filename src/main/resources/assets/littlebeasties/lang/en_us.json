@@ -8,6 +8,8 @@
 	"entity.littlebeasties.dragonfish": "Dragonfish",
 	"entity.littlebeasties.leaf_dartfish": "Leaf Dartfish",
 	"entity.littlebeasties.collector": "Collector",
+	"entity.littlebeasties.coin_frog": "Coin Frog",
+	"entity.littlebeasties.coin_frog_tadpole": "Coin Frog Tadpole",
 
 	"item.littlebeasties.sealight_spawn_egg": "Sealight Spawn Egg",
 	"item.littlebeasties.blue_sailfish_spawn_egg": "Blue Sailfish Spawn Egg",
@@ -16,15 +18,18 @@
 	"item.littlebeasties.dragonfish_spawn_egg": "Dragonfish Spawn Egg",
 	"item.littlebeasties.leaf_dartfish_spawn_egg": "Leaf Dartfish Spawn Egg",
 	"item.littlebeasties.collector_spawn_egg": "Collector Spawn Egg",
+	"item.littlebeasties.coin_frog_spawn_egg": "Coin Frog Spawn Egg",
 
 	"item.littlebeasties.blue_sailfish_bucket": "Bucket of Blue Sailfish",
 	"item.littlebeasties.sealight_bucket": "Bucket of Sealight",
 	"item.littlebeasties.leaf_dartfish_bucket": "Bucket of Leaf Dartfish",
+	"item.littlebeasties.coin_frog_tadpole_bottle": "Bottle of Coin Frog Tadpole",
 
 	"item.littlebeasties.sealight_veil": "Sealight Veil",
 	"item.littlebeasties.blue_sailfish": "Blue Sailfish",
 	"item.littlebeasties.fish_fillet": "Raw Fish Fillet",
 	"item.littlebeasties.smoked_fish_fillet": "Smoked Fish Fillet",
+	"item.littlebeasties.coin_frog": "Coin Frog",
 
 	"block.littlebeasties.leaf_fly_nest": "Leaf Fly Nest",
 

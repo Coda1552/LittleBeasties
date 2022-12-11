@@ -12,6 +12,7 @@ import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -46,5 +47,10 @@ public class CoinFrogTadpole extends AbstractFish {
 
 	public static boolean canSpawn(EntityType<CoinFrogTadpole> fish, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
 		return level.getFluidState(pos).is(FluidTags.WATER);
+	}
+
+	@Override
+	public ItemStack getPickedResult(HitResult target) {
+		return new ItemStack(LBItems.COIN_FROG_SPAWN_EGG.get());
 	}
 }

@@ -7,6 +7,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 
 public class CoinFrogModel extends EntityModel<CoinFrog> {
 	private final ModelPart body;
@@ -44,7 +45,18 @@ public class CoinFrogModel extends EntityModel<CoinFrog> {
 
 	@Override
 	public void setupAnim(CoinFrog entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		if (entity.isInWater()) {
+			float swing = ageInTicks * 0.2F;
+			this.body.y = Mth.cos(swing) * 0.45F + 23.5F;
+			this.body.xRot = Mth.cos(1.0F + swing) * 0.1F - 0.15F;
+			this.body.zRot = Mth.cos(swing) * 0.05F;
 
+			this.rightLeg.yRot = Mth.cos(1.0F + swing) * 0.2F - 0.25F;
+			this.rightLeg2.yRot = Mth.cos(1.0F + swing) * 0.4F - 0.35F;
+			this.leftLeg.yRot = Mth.cos(1.0F + swing + (float)Math.PI) * 0.2F + 0.25F;
+			this.leftLeg2.yRot = Mth.cos(1.0F + swing + (float)Math.PI) * 0.4F + 0.35F;
+
+		}
 	}
 
 	@Override

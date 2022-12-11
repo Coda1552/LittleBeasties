@@ -7,12 +7,15 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 
 public class CoinFrogTadpoleModel extends EntityModel<CoinFrogTadpole> {
-	private final ModelPart Body;
+	private final ModelPart body;
+	private final ModelPart tail;
 
 	public CoinFrogTadpoleModel(ModelPart root) {
-		this.Body = root.getChild("Body");
+		this.body = root.getChild("Body");
+		this.tail = body.getChild("Tail");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -28,11 +31,17 @@ public class CoinFrogTadpoleModel extends EntityModel<CoinFrogTadpole> {
 
 	@Override
 	public void setupAnim(CoinFrogTadpole entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		float swing = ageInTicks * 0.35F;
 
+		this.body.y = Mth.cos(swing) * 0.45F + 23.5F;
+		this.body.xRot = Mth.cos(1.0F + swing) * 0.35F;
+		this.body.zRot = Mth.cos(swing) * 0.1F;
+
+		this.tail.yRot = Mth.cos(swing * 2.0F) * 0.5F;
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }
