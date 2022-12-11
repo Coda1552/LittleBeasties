@@ -85,7 +85,6 @@ public class LeafFly extends Animal implements FlyingAnimal {
     }
 
     public class LeafFlyWanderGoal extends Goal {
-        private static final int WANDER_THRESHOLD = 22;
 
         LeafFlyWanderGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
