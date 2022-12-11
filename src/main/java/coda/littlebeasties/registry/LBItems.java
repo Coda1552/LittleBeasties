@@ -1,13 +1,14 @@
 package coda.littlebeasties.registry;
 
 import coda.littlebeasties.LittleBeasties;
-import coda.littlebeasties.common.item.LBBucketItem;
+import coda.littlebeasties.common.item.LBBucketLikeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -31,9 +32,10 @@ public class LBItems {
     public static final RegistryObject<Item> COLLECTOR_SPAWN_EGG = ITEMS.register("collector_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.COLLECTOR, 0xa8c9d0, 0x374963, new Item.Properties().tab(GROUP)));
     public static final RegistryObject<Item> LEAF_DARTFISH_SPAWN_EGG = ITEMS.register("leaf_dartfish_spawn_egg", () -> new ForgeSpawnEggItem(LBEntities.LEAF_DARTFISH, 0x71442a, 0x4c2d24, new Item.Properties().tab(GROUP)));
 
-	public static final RegistryObject<Item> BLUE_SAILFISH_BUCKET = ITEMS.register("blue_sailfish_bucket", () -> new LBBucketItem(LBEntities.BLUE_SAILFISH, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
-	public static final RegistryObject<Item> SEALIGHT_BUCKET = ITEMS.register("sealight_bucket", () -> new LBBucketItem(LBEntities.SEALIGHT, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
-	public static final RegistryObject<Item> LEAF_DARTFISH_BUCKET = ITEMS.register("leaf_dartfish_bucket", () -> new LBBucketItem(LBEntities.LEAF_DARTFISH, () -> Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(GROUP)));
+	public static final RegistryObject<Item> BLUE_SAILFISH_BUCKET = ITEMS.register("blue_sailfish_bucket", () -> new LBBucketLikeItem(LBEntities.BLUE_SAILFISH, () -> Fluids.WATER, Items.BUCKET, new Item.Properties().stacksTo(1).tab(GROUP)));
+	public static final RegistryObject<Item> SEALIGHT_BUCKET = ITEMS.register("sealight_bucket", () -> new LBBucketLikeItem(LBEntities.SEALIGHT, () -> Fluids.WATER, Items.BUCKET, new Item.Properties().stacksTo(1).tab(GROUP)));
+	public static final RegistryObject<Item> LEAF_DARTFISH_BUCKET = ITEMS.register("leaf_dartfish_bucket", () -> new LBBucketLikeItem(LBEntities.LEAF_DARTFISH, () -> Fluids.WATER, Items.BUCKET, new Item.Properties().stacksTo(1).tab(GROUP)));
+	public static final RegistryObject<Item> COIN_FROG_TADPOLE_BOTTLE = ITEMS.register("coin_frog_tadpole_bottle", () -> new LBBucketLikeItem(LBEntities.LEAF_DARTFISH, () -> Fluids.WATER, Items.GLASS_BOTTLE, new Item.Properties().stacksTo(1).tab(GROUP)));
 
     public static final RegistryObject<Item> SEALIGHT_VEIL = ITEMS.register("sealight_veil", () -> new Item(new Item.Properties().tab(GROUP)));
     public static final RegistryObject<Item> BLUE_SAILFISH = ITEMS.register("blue_sailfish", () -> new Item(new Item.Properties().tab(GROUP).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.2F).build())));

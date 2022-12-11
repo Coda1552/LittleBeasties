@@ -11,6 +11,7 @@ public class LittleBeastiesConfig {
 	public static int leafDartfishSpawnWeight = 6;
 	public static int collectorSpawnWeight = 5;
 
+	// todo - make the config file actually generate
 	public static void bakeServer(final ModConfig config) {
 		try {
 			blueSailfishSpawnWeight = LBConfigHolder.SERVER.blueSailfishSpawnWeight.get();

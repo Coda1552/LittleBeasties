@@ -34,6 +34,8 @@ public class ClientEvents {
     	event.registerEntityRenderer(LBEntities.DRAGONFISH.get(), DragonfishRenderer::new);
     	event.registerEntityRenderer(LBEntities.LEAF_DARTFISH.get(), LeafDartfishRenderer::new);
     	event.registerEntityRenderer(LBEntities.COLLECTOR.get(), CollectorRenderer::new);
+    	event.registerEntityRenderer(LBEntities.COIN_FROG.get(), CoinFrogRenderer::new);
+    	event.registerEntityRenderer(LBEntities.COIN_FROG_TADPOLE.get(), CoinFrogTadpoleRenderer::new);
     }
     
     @SubscribeEvent
@@ -45,5 +47,7 @@ public class ClientEvents {
     	event.registerLayerDefinition(LBModelLayers.DRAGONFISH, DragonfishModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.LEAF_DARTFISH, LeafDartfishModel::createBodyLayer);
     	event.registerLayerDefinition(LBModelLayers.COLLECTOR, CollectorModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.COIN_FROG, CoinFrogModel::createBodyLayer);
+    	event.registerLayerDefinition(LBModelLayers.COIN_FROG_TADPOLE, CoinFrogTadpoleModel::createBodyLayer);
     }
 }

@@ -19,6 +19,8 @@ public class LBEntities {
     public static final RegistryObject<EntityType<Dragonfish>> DRAGONFISH = create("dragonfish", EntityType.Builder.of(Dragonfish::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.35F));
     public static final RegistryObject<EntityType<LeafDartfish>> LEAF_DARTFISH = create("leaf_dartfish", EntityType.Builder.of(LeafDartfish::new, MobCategory.WATER_AMBIENT).sized(0.5F, 0.3F));
     public static final RegistryObject<EntityType<Collector>> COLLECTOR = create("collector", EntityType.Builder.of(Collector::new, MobCategory.WATER_CREATURE).sized(1.0F, 1.2F));
+    public static final RegistryObject<EntityType<CoinFrog>> COIN_FROG = create("coin_frog", EntityType.Builder.of(CoinFrog::new, MobCategory.WATER_CREATURE).sized(0.125F, 0.2F));
+    public static final RegistryObject<EntityType<CoinFrogTadpole>> COIN_FROG_TADPOLE = create("coin_frog_tadpole", EntityType.Builder.of(CoinFrogTadpole::new, MobCategory.WATER_CREATURE).sized(0.125F, 0.15F));
 
     private static <T extends Entity> RegistryObject<EntityType<T>> create(String name, EntityType.Builder<T> builder) {
         return ENTITIES.register(name, () -> builder.build(LittleBeasties.MOD_ID + "." + name));

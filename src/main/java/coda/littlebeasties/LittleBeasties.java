@@ -53,6 +53,8 @@ public class LittleBeasties {
         event.put(LBEntities.DRAGONFISH.get(), Dragonfish.createAttributes().build());
         event.put(LBEntities.COLLECTOR.get(), Collector.createCollectorAttributes().build());
         event.put(LBEntities.LEAF_DARTFISH.get(), LeafDartfish.createAttributes().build());
+        event.put(LBEntities.COIN_FROG.get(), CoinFrog.createAttributes().build());
+        event.put(LBEntities.COIN_FROG_TADPOLE.get(), CoinFrogTadpole.createAttributes().build());
     }
     
 	public void setup(final FMLCommonSetupEvent event) {
@@ -61,6 +63,8 @@ public class LittleBeasties {
 		SpawnPlacements.register(LBEntities.SEALIGHT.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, Sealight::canSealightSpawn);
 		SpawnPlacements.register(LBEntities.DRAGONFISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, Dragonfish::canSpawn);
 		SpawnPlacements.register(LBEntities.LEAF_DARTFISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, AbstractFish::checkSurfaceWaterAnimalSpawnRules);
+		SpawnPlacements.register(LBEntities.COIN_FROG.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, CoinFrog::canSpawn);
+		SpawnPlacements.register(LBEntities.COIN_FROG_TADPOLE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, CoinFrogTadpole::canSpawn);
 	}
 
 	@SubscribeEvent
