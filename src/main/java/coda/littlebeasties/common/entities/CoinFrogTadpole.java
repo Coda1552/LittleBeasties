@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class CoinFrogTadpole extends AbstractFish {
 
+	// todo - add bottling feature
 	public CoinFrogTadpole(EntityType<? extends AbstractFish> p_27461_, Level p_27462_) {
 		super(p_27461_, p_27462_);
 	}
