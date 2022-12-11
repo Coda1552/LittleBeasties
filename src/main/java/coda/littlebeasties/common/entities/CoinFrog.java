@@ -23,7 +23,7 @@ public class CoinFrog extends AbstractFish {
 
 	public CoinFrog(EntityType<? extends AbstractFish> p_27461_, Level p_27462_) {
 		super(p_27461_, p_27462_);
-		this.moveControl = new SmoothSwimmingMoveControl(this, 35, 10, 0.1F, 0.5F, false);
+		this.moveControl = new SmoothSwimmingMoveControl(this, 15, 10, 0.1F, 0.5F, false);
 		this.lookControl = new SmoothSwimmingLookControl(this, 10);
 	}
 
