@@ -1,17 +1,12 @@
 package coda.littlebeasties.client.model;
 
+import coda.littlebeasties.common.entities.BlueSailfish;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
-import coda.littlebeasties.common.entities.BlueSailfish;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 public class BlueSailfishModel extends EntityModel<BlueSailfish> {
@@ -50,11 +45,10 @@ public class BlueSailfishModel extends EntityModel<BlueSailfish> {
 
 	@Override
 	public void setupAnim(BlueSailfish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		float speed = 1.0f;
-		float degree = 1.0f;
-		this.CaudalFin.xRot = Mth.cos(limbSwing * speed * 0.3F) * degree * 0.5F * limbSwingAmount;
+		this.CaudalFin.xRot = Mth.cos(limbSwing * 0.3F) * 0.5F * limbSwingAmount;
 		this.LeftPectoralFin.yRot = 0.5F;
 		this.RightPectoralFin.yRot = -0.5F;
+
 	}
 
 	@Override

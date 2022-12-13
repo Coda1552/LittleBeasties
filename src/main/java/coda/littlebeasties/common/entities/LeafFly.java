@@ -28,7 +28,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-// todo - remove fall damage
 public class LeafFly extends Animal implements FlyingAnimal {
 
     public LeafFly(EntityType<? extends Animal> p_27557_, Level p_27558_) {
