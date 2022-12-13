@@ -63,8 +63,6 @@ public class BlueSailfish extends AbstractFish {
 			setFinsOpen(false);
 		}
 
-		System.out.println(entityList.size());
-
 	}
 
 	@Override
