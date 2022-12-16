@@ -1,27 +1,20 @@
 package coda.littlebeasties.common.entities;
 
 import coda.littlebeasties.registry.LBItems;
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.AbstractSchoolingFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class LeafDartfish extends AbstractSchoolingFish {
 
@@ -67,4 +60,8 @@ public class LeafDartfish extends AbstractSchoolingFish {
 		return SoundEvents.COD_DEATH;
 	}
 
+	@Override
+	public int getMaxSchoolSize() {
+		return 15;
+	}
 }
