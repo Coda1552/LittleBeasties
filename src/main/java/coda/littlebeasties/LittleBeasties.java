@@ -1,32 +1,30 @@
 package coda.littlebeasties;
 
 import coda.littlebeasties.common.entities.*;
-import coda.littlebeasties.registry.LBBlocks;
-import net.minecraft.world.entity.animal.AbstractFish;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import coda.littlebeasties.config.LBConfigHolder;
 import coda.littlebeasties.config.LittleBeastiesConfig;
+import coda.littlebeasties.registry.LBBlocks;
 import coda.littlebeasties.registry.LBEntities;
 import coda.littlebeasties.registry.LBItems;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.level.biome.Biome.BiomeCategory;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(LittleBeasties.MOD_ID)
-@Mod.EventBusSubscriber(modid = LittleBeasties.MOD_ID)
 public class LittleBeasties {
     public static final String MOD_ID = "littlebeasties";
     
@@ -34,15 +32,17 @@ public class LittleBeasties {
 
     public LittleBeasties() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		final ModLoadingContext modLoadingContext = ModLoadingContext.get();
-		bus.addListener(this::setup);
-
-        LBEntities.ENTITIES.register(bus);
-        LBItems.ITEMS.register(bus);
-        LBBlocks.BLOCKS.register(bus);
-
+        IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+		ModLoadingContext modLoadingContext = ModLoadingContext.get();
 		modLoadingContext.registerConfig(ModConfig.Type.SERVER, LBConfigHolder.SERVER_SPEC);
-        bus.addListener(this::createAttributes);
+
+		LBEntities.ENTITIES.register(bus);
+		LBItems.ITEMS.register(bus);
+		LBBlocks.BLOCKS.register(bus);
+
+		bus.addListener(this::setup);
+		bus.addListener(this::createAttributes);
+		forgeBus.addListener(this::onBiomeLoad);
     }
 
     private void createAttributes(EntityAttributeCreationEvent event) {
@@ -57,7 +57,7 @@ public class LittleBeasties {
         event.put(LBEntities.COIN_FROG_TADPOLE.get(), CoinFrogTadpole.createAttributes().build());
     }
     
-	public void setup(final FMLCommonSetupEvent event) {
+	private void setup(final FMLCommonSetupEvent event) {
 		SpawnPlacements.register(LBEntities.BLUE_SAILFISH.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, BlueSailfish::canSailfishSpawn);
 		SpawnPlacements.register(LBEntities.DUGOIN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Dugoin::canDugoinSpawn);
 		SpawnPlacements.register(LBEntities.SEALIGHT.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, Sealight::canSealightSpawn);
@@ -67,8 +67,7 @@ public class LittleBeasties {
 		SpawnPlacements.register(LBEntities.COIN_FROG_TADPOLE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.OCEAN_FLOOR, CoinFrogTadpole::canSpawn);
 	}
 
-	@SubscribeEvent
-	public static void onBiomeLoad(BiomeLoadingEvent event) {
+	private void onBiomeLoad(BiomeLoadingEvent event) {
 
 		if (event.getCategory() == BiomeCategory.BEACH) {
 			event.getSpawns().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(LBEntities.DUGOIN.get(), LittleBeastiesConfig.dugoinSpawnWeight, 4, 10));

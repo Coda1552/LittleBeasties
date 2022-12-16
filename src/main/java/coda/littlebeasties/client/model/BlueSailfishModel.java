@@ -45,10 +45,16 @@ public class BlueSailfishModel extends EntityModel<BlueSailfish> {
 
 	@Override
 	public void setupAnim(BlueSailfish entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.CaudalFin.xRot = Mth.cos(limbSwing * 0.3F) * 0.5F * limbSwingAmount;
-		this.LeftPectoralFin.yRot = 0.5F;
-		this.RightPectoralFin.yRot = -0.5F;
+		this.CaudalFin.yRot = Mth.cos(ageInTicks * 0.8F) * 0.45F;
+		if (entity.areFinsOpen()) {
+			this.LeftPectoralFin.yRot = Mth.cos(ageInTicks * 0.5F) * 0.45F + 0.5F;
+			this.RightPectoralFin.yRot = Mth.cos(ageInTicks * 0.5F + Mth.PI) * 0.45F - 0.5F;
+		}
+		else {
+			this.LeftPectoralFin.yRot = Mth.cos(ageInTicks * 0.25F) * 0.25F + 0.5F;
+			this.RightPectoralFin.yRot = Mth.cos(ageInTicks * 0.256F + Mth.PI) * 0.25F - 0.5F;
 
+		}
 	}
 
 	@Override
