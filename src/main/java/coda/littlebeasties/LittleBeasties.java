@@ -39,7 +39,7 @@ public class LittleBeasties {
 
 		bus.addListener(this::setup);
 		bus.addListener(this::createAttributes);
-		forgeBus.addListener(this::onBiomeLoad);
+		forgeBus.addListener(this::onBiomeLoad); // todo - this event isnt being called it seems
 
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LBCOnfig.Common.SPEC);
 	}
@@ -77,6 +77,7 @@ public class LittleBeasties {
 		}
 
 		String name = event.getName().getPath();
+
 		if (name.equals("warm_ocean")) {
 			event.getSpawns().addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(LBEntities.BLUE_SAILFISH.get(), LBCOnfig.Common.INSTANCE.blueSailfishSpawnWeight.get(), 1, 1));
 		}
