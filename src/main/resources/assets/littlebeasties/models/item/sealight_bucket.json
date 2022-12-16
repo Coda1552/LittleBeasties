@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "littlebeasties:item/sealight_bucket_1"
+    "layer0": "littlebeasties:item/sealight_bucket_starlight"
   },
   "overrides": [
     {
