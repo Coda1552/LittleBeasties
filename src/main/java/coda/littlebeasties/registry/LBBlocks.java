@@ -1,6 +1,7 @@
 package coda.littlebeasties.registry;
 
 import coda.littlebeasties.LittleBeasties;
+import coda.littlebeasties.common.blocks.SeaPickleLanternBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +20,7 @@ public class LBBlocks {
 
     // todo - custom block for leaf fly nests
     public static final RegistryObject<Block> LEAF_FLY_NEST = register("leaf_fly_nest", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(1.4F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> SEA_PICKLE_LANTERN = register("sea_pickle_lantern", () -> new SeaPickleLanternBlock(BlockBehaviour.Properties.of(Material.WATER_PLANT).noOcclusion().strength(1.0F).sound(SoundType.WET_GRASS)));
 
     public static final RegistryObject<Block> MARINE_CLAY = register("marine_clay", () -> new Block(BlockBehaviour.Properties.of(Material.CLAY).strength(0.6F).sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> WHITE_MARINE_CLAY = register("white_marine_clay", () -> new Block(BlockBehaviour.Properties.of(Material.CLAY).strength(0.6F).sound(SoundType.GRAVEL)));
